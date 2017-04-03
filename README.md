@@ -12,3 +12,5 @@ ssh-add -K keys/ami_keys
 terraform apply
 Visit your domain to see route53 now pointing to the deployed load balancer and instances
 ```
+
+![pic](resources/pic.png)
