@@ -26,10 +26,6 @@ resource "aws_instance" "web-server-One" {
   }
 }
 
-data "template_file" "user_data" {
-  template = "${file("config/cloud-config.yml")}"
-}
-
 resource "aws_instance" "web-server-Two" {
   connection {
     user     = "ubuntu"
