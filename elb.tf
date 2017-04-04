@@ -1,3 +1,4 @@
+# ELB ########################################################################
 resource "aws_elb" "elb" {
   name = "elb"
 
@@ -21,4 +22,12 @@ resource "aws_elb" "elb" {
   }
 
   instances = ["${aws_instance.web-server-One.id}", "${aws_instance.web-server-Two.id}"]
+}
+
+# Sticky balancing ############################################################
+resource "aws_lb_cookie_stickiness_policy" "foo" {
+  name                     = "elb-policy"
+  load_balancer            = "${aws_elb.elb.id}"
+  lb_port                  = 80
+  cookie_expiration_period = 600
 }

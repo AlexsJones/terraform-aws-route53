@@ -19,9 +19,11 @@ resource "aws_instance" "web-server-One" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get -y update",
-      "sudo apt-get -y install nginx",
-      "sudo service nginx start",
+      "sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D",
+      "sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'",
+      "sudo apt-get -y update && sudo apt-get -y install docker-engine",
+      "echo 'thing1' >> thing1",
+      "sudo docker run --name some-nginx -p 80:80 -v thing1:/usr/share/nginx/html:ro -d nginx",
     ]
   }
 }
@@ -47,9 +49,11 @@ resource "aws_instance" "web-server-Two" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get -y update",
-      "sudo apt-get -y install nginx",
-      "sudo service nginx start",
+      "sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D",
+      "sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'",
+      "sudo apt-get -y update && sudo apt-get -y install docker-engine",
+      "echo 'thing2' >> thing2",
+      "sudo docker run --name some-nginx -p 80:80 -v thing2:/usr/share/nginx/html:ro -d nginx",
     ]
   }
 }
