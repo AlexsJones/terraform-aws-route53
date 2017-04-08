@@ -10,15 +10,6 @@ variable "availability_zone" {
   }
 }
 
-variable "aws_nameserver" {
-  default = {
-    one   = "ns-1171.awsdns-18.org"
-    two   = "ns-86.awsdns-10.com"
-    three = "ns-587.awsdns-09.net"
-    four  = "ns-1765.awsdns-28.co.uk"
-  }
-}
-
 variable "amazon_amis" {
   type = "map"
 

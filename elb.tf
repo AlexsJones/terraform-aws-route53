@@ -21,7 +21,7 @@ resource "aws_elb" "elb" {
     interval            = 10
   }
 
-  instances = ["${aws_instance.web-server-One.id}", "${aws_instance.web-server-Two.id}"]
+  instances = ["${aws_instance.web-server.*.id}"]
 }
 
 # Sticky balancing ############################################################
