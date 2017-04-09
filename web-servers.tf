@@ -1,5 +1,5 @@
 resource "aws_instance" "web-server" {
-  count = 2
+  count = 1
 
   connection {
     user     = "ubuntu"

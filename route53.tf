@@ -4,9 +4,12 @@ resource "aws_route53_zone" "web-elb" {
 
 resource "aws_route53_record" "web-elb-record" {
   zone_id = "${aws_route53_zone.web-elb.zone_id}"
-  name    = "www.crystal-basilica.com"
-  type    = "CNAME"
-  ttl     = "60"
+  name    = "www"
+  type    = "A"
 
-  records = ["${aws_elb.elb.dns_name}"]
+  alias {
+    zone_id                = "${aws_elb.elb.zone_id}"
+    name                   = "${aws_elb.elb.dns_name}"
+    evaluate_target_health = true
+  }
 }
