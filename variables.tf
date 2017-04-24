@@ -2,6 +2,10 @@ variable "region" {
   default = "eu-west-1"
 }
 
+variable "zone_id" {
+  description = "Use an existing hosted zone" //Something like Z2WUWP7YVWD7FQ
+}
+
 variable "availability_zone" {
   type = "map"
 
